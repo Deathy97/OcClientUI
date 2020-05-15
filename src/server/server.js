@@ -2,17 +2,18 @@ var Datastore = require('nedb')
 const userSettings = new Datastore({ filename: './src/database/userSettings.db', autoload: true });
 const user = new Datastore({ filename: './src/database/user.db', autoload: true });
 
-async function insertUser(userData){
+async function insertUser(userData) {
 
     var data = {
-        ocPath: userData.username,
-        proyectPath: userData.password
+        ocPath: userData.ocUser,
+        proyectPath: userData.ocPassword
     }
-    
+
     await user.remove({}, { multi: true }, function (err, numRemoved) {
     });
 
     await user.insert(data, function (err, newData) {
+        console.log(newData);
     });
 }
 
@@ -27,12 +28,12 @@ async function insertUserSettings(userSettingsData) {
     });
 
     await userSettings.insert(data, function (err, newData) {
-    });
-
-    await userSettings.find({}, function (err, docs) {
-        console.log(docs)
+        console.log(newData)
     });
 
 }
 
-module.exports = { insertUserSettings };
+module.exports = {
+    insertUser,
+    insertUserSettings
+};

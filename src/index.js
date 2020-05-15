@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== "production") {
 
 app.allowRendererProcessReuse = false;
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {createWindow('views/ocLogin.html')});
 
 
 

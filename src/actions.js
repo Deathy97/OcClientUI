@@ -1,8 +1,15 @@
-const { insertUserSettings } = require('./server/server');
+const { insertUserSettings, insertUser } = require('./server/server');
 
+function insertUserData(data) {
+  console.log(data)
+  insertUser(data);
+}
 
 function insertSettings(userSettings) {
-    insertUserSettings(userSettings);
-  }
+  insertUserSettings(userSettings);
+}
 
-module.exports = { insertSettings }
+module.exports = {
+  insertUserData,
+  insertSettings
+}
