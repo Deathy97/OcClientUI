@@ -1,56 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SetUp Page</title>
-    <link
-      rel="stylesheet"
-      href="https://bootswatch.com/4/journal/bootstrap.min.css"
-    />
-  </head>
-  <body>
-    <form class="p-4">
-      <div class="form-group">
-        <label for="ocPath">Path of your local Oc client</label>
-        <input
-          type="text"
-          name="ocPath"
-          id="ocPath"
-          placeholder="ocPath"
-          class="form-control"
-        />
-      </div>
-      <div class="form-group">
-        <label for="urlProject">Path of your Oc project</label>
-        <input
-          type="text"
-          name="urlProject"
-          id="urlProject"
-          placeholder="urlProject"
-          class="form-control"
-        />
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">
-        Save Configuration
-      </button>
-    </form>
 
-    <script>
-      const { ipcRenderer } = require("electron");
-      const form = document.querySelector("form");
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const ocPath = document.querySelector("#ocPath").value;
-        const projectUrl = document.querySelector("#urlProject").value;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SetUp Page</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css" />
+</head>
 
-        const dataForm = {
-            ocPath: ocPath,
-            projectUrl: projectUrl,
-          };
+<body>
+  <form class="p-4">
+    <div class="form-group">
+      <label for="ocPath">Path of your local Oc client</label>
+      <input type="text" name="ocPath" id="ocPath" placeholder="ocPath" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="proyectPath">Path of your Oc project</label>
+      <input type="text" name="proyectPath" id="proyectPath" placeholder="proyectPath" class="form-control" />
+    </div>
+    <button type="submit" id="submitButtton" class="btn btn-primary btn-block">
+      Save Configuration
+    </button>
+  </form>
+</body>
 
-        ipcRenderer.send("insertUserConfig", dataForm);
-      });
-    </script>
-  </body>
+<script src="./app.js"></script>
+
 </html>

@@ -1,18 +1,22 @@
-  var sqlite3 = require("sqlite3").verbose();
-  console.log('llega');
+var Datastore = require('nedb')
+var userSettings = new Datastore({ filename: './src/database/userSettings.db', autoload: true });
 
-  var db = new sqlite3.Database("./database/mydb.sqlite3", (err) => {
-    if (err) {
-      db.close();
-      console.log("Error when creating the database", err);
-    } else {
-      console.log("Database created!");
+async function insertUserSettings(userSettingsData) {
+    var data = {
+        ocPath: userSettingsData.ocPath,
+        proyectPath: userSettingsData.proyectPath
     }
-  });
 
+    await userSettings.remove({}, { multi: true }, function (err, numRemoved) {
+    });
 
-  function alerta(){
-    console.log('llega');
-  }
+    await userSettings.insert(data, function (err, newData) {
+    });
 
+    await userSettings.find({}, function (err, docs) {
+        console.log(docs)
+    });
 
+}
+
+module.exports = { insertUserSettings };
