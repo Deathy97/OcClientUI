@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/Deathy97/OcClientUI#readme",
   "dependencies": {
-    "electron": "^8.2.5",
+    "electron": "^15.5.5",
     "electron-reload": "^1.5.0",
     "nedb": "^1.8.0"
   }
